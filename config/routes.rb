@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :user 
+  resources :users,except: [:new_registration_path]
   root to: "students#index"
   resources :students
   resources :institutions
