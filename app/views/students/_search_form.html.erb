@@ -6,8 +6,12 @@
     <div class="col-sm-3 my-1">
       <%= text_field_tag(:institution_name, '', class: "form-control", placeholder: "Institution") %>
     </div>
+    <div class="col-sm-3 my-1">
+      <%= text_field_tag(:country_name, '', class: "form-control", placeholder: "Country") %>
+    </div>
+
     <div class="col-auto my-1">
-      <%= button_tag 'Submit', class: "btn btn-primary" %>
+      <%= button_tag 'Search', class: "btn btn-primary" %>
     </div>
   </div>  
 <% end %>
