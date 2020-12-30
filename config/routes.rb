@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :institutions
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get'/register' => 'students#new'
-  get'/admin' =>'students#admin'
+  get'/admin' =>'admin#admin'
+  get 'admin/approve'=>'admin#approve' ,:as => 'approve'
 end

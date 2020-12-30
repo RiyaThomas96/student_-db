@@ -42,7 +42,8 @@ class StudentsController < ApplicationController
   def update
     respond_to do |format|
       if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        # format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html{redirect_back(fallback_location: root_path)}
         format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }
@@ -61,6 +62,10 @@ class StudentsController < ApplicationController
     end
   end
   def admin
+    @students = Student.all
+  end
+  def approve
+    @students = Student.all
   end
 
   private
@@ -71,6 +76,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:full_name, :address, :phone, :institution_id, :country_id)
+      params.require(:student).permit(:full_name, :address, :phone, :institution_id, :country_id, :approved)
     end
 end
