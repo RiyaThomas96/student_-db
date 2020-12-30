@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  highersecondary: MyString
+  diploma: MyString
+  graduation: MyString
+  pg: MyString
+
+two:
+  highersecondary: MyString
+  diploma: MyString
+  graduation: MyString
+  pg: MyString

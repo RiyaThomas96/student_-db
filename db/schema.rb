@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_095819) do
+ActiveRecord::Schema.define(version: 2020_12_30_091754) do
 
   create_table "countries", force: :cascade do |t|
     t.string "country_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["country_name"], name: "index_countries_on_country_name", unique: true
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.string "highersecondary"
+    t.string "diploma"
+    t.string "graduation"
+    t.string "pg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "institutions", force: :cascade do |t|

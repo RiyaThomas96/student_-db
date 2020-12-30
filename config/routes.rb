@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :educations
   resources :countries
   devise_for :user 
   resources :users,except: [:new_registration_path]

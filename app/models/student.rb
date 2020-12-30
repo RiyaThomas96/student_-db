@@ -2,6 +2,7 @@ class Student < ApplicationRecord
   belongs_to :institution
   # after_create :set_rank
   belongs_to :country
+  has_many :educations
   def self.search(params)
     students = all
     if params[:student_name].present?

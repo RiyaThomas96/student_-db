@@ -14,7 +14,7 @@
 
   <tbody>
     <% @institutions.each do |institution| %>
-    <%if institution.approved?%>
+    
       <tr>
         <td><%= institution.name %></td>
         <td><%= institution.address %></td>
@@ -23,7 +23,7 @@
         <td><%= link_to 'Edit', edit_institution_path(institution) %></td>
         <td><%= link_to 'Destroy', institution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <%end%>
+      
     <% end %>
   </tbody>
 </table>
