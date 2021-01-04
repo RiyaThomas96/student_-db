@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :educations
+
+
   resources :countries
   devise_for :user 
   resources :users,except: [:new_registration_path]
@@ -10,4 +11,5 @@ Rails.application.routes.draw do
   get'/register' => 'students#new'
   get'/admin' =>'admin#admin'
   get 'admin/approve'=>'admin#approve' ,:as => 'approve'
+  get'/credentials/search' => 'credential#index', :as=>'search'
 end
