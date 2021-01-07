@@ -12,18 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2021_01_04_045814) do
 
-  create_table "buildings", force: :cascade do |t|
-    t.string "name"
-    t.integer "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "countries", force: :cascade do |t|
     t.string "country_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["country_name"], name: "index_countries_on_country_name", unique: true
   end
 
   create_table "credentials", force: :cascade do |t|

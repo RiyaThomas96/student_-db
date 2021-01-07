@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: [:show, :edit, :update, :destroy]
+  before_action :set_student, only: [:show, :edit, :update, :destroy, :approve]
   skip_before_action :authenticate_user!, :only => [:index, :new, :create, :show,:destroy]
   # GET /students
   # GET /students.json
@@ -55,20 +55,36 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
+   WelcomemailerMailer.reject(@student).deliver
     @student.destroy
     respond_to do |format|
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
       format.json { head :no_content }
     end
+  
+    
   end
   def admin
     @students = Student.all
   end
   def approve
-    @students = Student.all
-  end
+    
+    respond_to do |format|
+      @student.update(student_params)
 
-  private
+        # format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+        format.html{redirect_back(fallback_location: root_path, notice: 'student was approved')}
+        format.json { render :show, status: :ok, location: @student }
+
+    end  
+    if @student.approved?
+      WelcomemailerMailer.notify(@student).deliver
+    
+
+    end
+  end
+  
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_student
       @student = Student.find(params[:id])
@@ -76,7 +92,7 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:full_name, :address, :phone, :institution_id, :country_id, :approved, credential_ids: [])
+      params.require(:student).permit(:full_name, :address, :mobile, :email, :institution_id, :country_id, :approved, credential_ids: [])
     end
 
 

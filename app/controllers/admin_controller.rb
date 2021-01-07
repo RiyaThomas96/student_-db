@@ -2,7 +2,8 @@ class AdminController < ApplicationController
     def admin
         @students = Student.all
     end
-    def approve
+    def list
         @students=Student.all
     end
+    
 end

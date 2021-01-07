@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get'/register' => 'students#new'
   get'/admin' =>'admin#admin'
-  get 'admin/approve'=>'admin#approve' ,:as => 'approve'
+  get 'admin/list'=>'admin#list' ,:as => 'list'
   get'/credentials/search'=> 'credential#index', :as => 'credential_search'
+  match 'admin/approve/:id' , to: 'students#approve' , :as=> 'approve' , via: :patch
+  
+  
 end

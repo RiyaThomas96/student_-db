@@ -2,7 +2,7 @@ class Student < ApplicationRecord
   belongs_to :institution
   # after_create :set_rank
   belongs_to :country
-  has_many :educations 
+  has_many :educations , :dependent => :destroy
   has_many :credentials, :through => :educations
   def self.search(params)
     students = all
