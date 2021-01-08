@@ -4,12 +4,15 @@ class Credential < ApplicationRecord
 
 
     def self.search(params)
-        students= Student.all
-       
-        if params[:credential_name].present?
-          puts params[:credential_name][:name].inspect
-          #  students = Student.joins(:credentials).where (credentials: {name: ["postgraduation"]} )
-        end
-        students
-    end
+      students = Student.all
+      students1 = Student.all
+      if params[:credential_name].present?
+      (params[:credential_name][:name] - [""]).each do |par|
+      students = Student.joins(:credentials).where(credentials: { name: [par] } )
+      students1 = students1 & students
+      end
+      end
+      students1
+      
+      end
 end

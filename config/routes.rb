@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get'/admin' =>'admin#admin'
   get 'admin/list'=>'admin#list' ,:as => 'list'
   get'/credentials/search'=> 'credential#index', :as => 'credential_search'
-  match 'admin/approve/:id' , to: 'students#approve' , :as=> 'approve' , via: :patch
-  
+  match 'admin/approve/:id' , to: 'admin#approve' , :as=> 'approve' , via: :patch
+  match 'admin/reject/:id' , to: 'admin#reject'  , :as=> 'reject' , via: :patch
   
 end

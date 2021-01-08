@@ -51,6 +51,14 @@
 
          </div>
         <%end%></td>
+         <td><%= form_for student,url: reject_path(student) do |f| %>
+          <div class="field">
+           <%= f.label "Reject" %> 
+           <%= f.check_box :approved,{},:false %> <br />
+           <%= f.submit "Submit", class: "button small radius" %>
+
+         </div>
+        <%end%></td>
         
          <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         

@@ -8,4 +8,5 @@ class WelcomemailerMailer < ApplicationMailer
         @student = student
         mail(to: @student.email, subject: 'rejected')
     end
+    
 end
