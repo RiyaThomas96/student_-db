@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body  >
+<style>
+body {
+  background-image: url(<%= asset_path '1.webp' %>)
+}
+</style>
+
+
+<div class="container">
 <%= form_with(model: student, local: true) do |form| %>
   <% if student.errors.any? %>
     <div id="error_explanation">
@@ -10,43 +22,66 @@
       </ul>
     </div>
   <% end %>
+  <section class="content">
+      <div class="container-fluid">
+        
+          <!-- left column -->
+          <div class="col-sm-10 offset-sm-1 ">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Register a New Student</h3>
+              </div>
+               <div class="card-body">
+                  <div class="form-group">
+                      <%= form.label :full_name %>
+                       <%= form.text_field :full_name, :class =>"form-control", :placeholder =>"Enter Full Name"%>
+                  </div>
+                   <div class="form-group">
+                     <%= form.label :address %>
+                     <%= form.text_area :address,:class =>"form-control" ,:placeholder =>"Enter Address" %>
+                  </div>
+                  <div class="form-group">
+                     <%= form.label :mobile %>
+                     <%= form.text_field :mobile,:class =>"form-control" ,:placeholder =>"Enter Phonenumber"  %>
+                  </div>
+                   <div class="form-group">
+                      <%=form.label :email%>
+                      <%= form.text_field :email,:class =>"form-control" ,:placeholder =>"Enter Email"%>
+                  </div>
 
-  <div class="field">
-    <%= form.label :full_name %>
-    <%= form.text_field :full_name %>
-  </div>
+                   <div class="form-group">
+                      <%= form.label :institution_id %>
+                       <%= form.select :institution_id, options_from_collection_for_select(Institution.all, :id, :name),{  prompt: "Select Institution" } ,:class=> 'form-control' %>
+                   </div>
+                   <div class="form-group">
+                      <%= form.label :country_id %>
+                      <%= form.select :country_id, options_from_collection_for_select(Country.all, :id, :country_name),{ prompt:"Select Country"} , :class=>"form-control"%>
+                   </div>
+                   <p>
+                  <%= form.label :credentials %><br />
+                    <% for credential in Credential.all %>
+                    <%= check_box_tag "student[credential_ids][]", credential.id, @student.credentials.include?(credential) %>
+                    <%=h credential.name %><br />
+                 <% end %>
+                </p>
+                <div class="form-group">
+                   <%= form.submit "Create Student" , class: "btn btn-outline-primary" %>
+                
+                </div>
+              <% end %>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_area :address %>
-  </div>
+                  </div>
+   
 
-  <div class="field">
-    <%= form.label :mobile %>
-    <%= form.text_field :mobile %>
-  </div>
-  <div class="field">
-   <%=form.label :email%>
-   <%= form.text_field :email%>
-  </div>
+ 
 
-  <div class="field">
-    <%= form.label :institution_id %>
-    <%= form.select :institution_id, options_from_collection_for_select(Institution.all, :id, :name) %>
-  </div>
-   <div class="field">
-    <%= form.label :country_id %>
-    <%= form.select :country_id, options_from_collection_for_select(Country.all, :id, :country_name) %>
-  </div>
-   <p>
-    <%= form.label :credentials %><br />
-    <% for credential in Credential.all %>
-      <%= check_box_tag "student[credential_ids][]", credential.id, @student.credentials.include?(credential) %>
-      <%=h credential.name %><br />
-    <% end %>
-  </p>
+  
+ 
+   
+   
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+  
+
+</body>
+</html>

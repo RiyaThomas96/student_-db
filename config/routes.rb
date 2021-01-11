@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
 
   resources :countries
-  devise_for :user 
-  resources :users,except: [:new_registration_path]
+  devise_for :user
+  # resources :users
   root to: "students#index"
   resources :students
   resources :institutions

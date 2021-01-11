@@ -33,7 +33,7 @@
       <%= link_to 'Admin Logout',destroy_user_session_path,method: :delete,:class=>'nav-link m-2 menu-item'%></li></ul>
      <li class="nav-item-active">
      <ul class="navbar-nav mr-auto">
-      <%= link_to 'Back', students_path %></ul></li></div>
+      <%= link_to 'Back', students_path ,:class=>'nav-link m-2 menu-item'%></ul></li></div>
       <%else%>
       <div class="pull-left">
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -43,7 +43,7 @@
       </li></ul>
       <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-      <%=link_to "Register a New Student", new_student_path%></ul></li></div>
+      <%=link_to "Register a New Student", new_student_path,:class=>'nav-link m-2 menu-item'%></ul></li></div>
      <%end%>
    
   </div>
@@ -51,6 +51,7 @@
     <div class="container">
       <%= yield %>
     </div>
+    
     
   </body>
 </html>
